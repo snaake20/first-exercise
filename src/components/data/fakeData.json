@@ -36,7 +36,7 @@
         {
             "id":11,
             "attributes":{
-                "name": "Branza",
+                "name": "Branza de oaie",
                 "price": 35,
                 "bio": true,
                 "createdAt": "2022-01-01T00:00:00.000Z",

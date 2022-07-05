@@ -9,14 +9,14 @@ export const Product = (props) => {
       name: props.name,
       price: props.price,
     }
-    const onClickHandler = (e) => {
+    const onChangeHandler = (e) => {
       props.onClick(product, e.target.checked)
     }
 
   return (
     <div id='product' className='border-b-2 border-gray last:border-b-0 bg-white flex'>
       <div id='product__cart' className='flex flex-col align-center justify-center border-r-2 border-gray p-2'>
-        <input type='checkbox' className='product__cart-add'  onClick={onClickHandler} />
+        <input type='checkbox' className='product__cart-add'  onChange={onChangeHandler} />
         <label >Add to Cart</label>
       </div>
       <div className='product__info p-2'>
