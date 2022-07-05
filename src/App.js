@@ -3,7 +3,7 @@ import Products from './components/Products'
 
 function App() {
   return (
-    <div id='app'>
+    <div id='app' className=''>
       <Products />
     </div>
   )
