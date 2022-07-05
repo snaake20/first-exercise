@@ -15,7 +15,8 @@ export const Button = (props) => {
         fetch('http://localhost:3000/api/orders', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${props.jwt}`
             },
             body: toSend
         })
@@ -30,5 +31,6 @@ export const Button = (props) => {
 
 Button.propTypes={
     order: PropTypes.array.isRequired,
-    onClick: PropTypes.func
+    onClick: PropTypes.func,
+    jwt: PropTypes.string
 }

@@ -1,10 +1,10 @@
 import {useState} from 'react'
+import PropTypes from 'prop-types'
 
-export const LoginForm = () =>{
+export const LoginForm = (props) =>{
     
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    
 
     const onSubmitHandler = (e) => {
         e.preventDefault();
@@ -21,9 +21,7 @@ export const LoginForm = () =>{
             body: data
         })
         .then(res => res.json())
-        .then(data => {
-            console.log(data)
-        })
+        .then(data => { props.onSubmit(data.jwt) })
     }
     return(
         <>
@@ -40,4 +38,7 @@ export const LoginForm = () =>{
             </form>
         </>
     )
+}
+LoginForm.propTypes = {
+    onSubmit: PropTypes.func
 }

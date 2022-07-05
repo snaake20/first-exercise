@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
+import PropTypes from 'prop-types'
 import { Product } from './Product'
 import fakeData from './data/fakeData.json'
 import { Order } from './Order'
 import { Button } from './Button'
 
-const Products = () => {
+const Products = (props) => {
   const [products, setProducts] = useState([])
   const [orderList, setOrderList] = useState([])
   const [order, setOrder] = useState([])
@@ -70,9 +71,12 @@ const Products = () => {
             return <Order key={id} name={name} price={price} onClick={handleClick} />
           })
         )}
-        {orderList.length ? <Button order={order} onClick={clear} /> : null}
+        {orderList.length ? <Button jwt={props.jwt} order={order} onClick={clear} /> : null}
       </div>
     </div>
   )
+}
+Products.propTypes ={
+  jwt: PropTypes.string
 }
 export default Products
