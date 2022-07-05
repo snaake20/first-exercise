@@ -14,7 +14,7 @@ const Products = (props) => {
   useEffect(() => {
     setProducts(fakeData.data)
     // const fetchData = async () => {
-    //   const res = await fetch('https://213a-95-77-98-248.eu.ngrok.io/api/products')
+    //   const res = await fetch('http://localhost:1337/api/products')
     //   const json = await res.json()
     //   setProducts(json.data)
     // }
@@ -54,6 +54,7 @@ const Products = (props) => {
               price={price}
               bio={bio}
               onClick={handleClick}
+              checked={orderList.some((p) => p.id === product.id)}
             />
           )
         })}

@@ -12,7 +12,7 @@ export const Button = (props) => {
         }
         const toSend = JSON.stringify(order)
         // console.log(toSend)
-        fetch('http://localhost:3000/api/orders', {
+        fetch('http://localhost:1337/api/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
