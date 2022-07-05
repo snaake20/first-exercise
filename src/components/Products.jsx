@@ -1,32 +1,26 @@
 import React, { useEffect, useState } from 'react'
 import { Product } from './Product'
-// import fakeData from './data/fakeData.json'
+import fakeData from './data/fakeData.json'
 import { Order } from './Order'
 import { Button } from './Button'
-
-var requestOptions = {
-  method: 'GET',
-  headers: {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': 'https://2f20-95-77-98-248.eu.ngrok.io/api/products',
-    'Access-Control-Allow-Credentials': 'true',
-    'Access-Control-Allow-Methods': 'GET,HEAD,OPTIONS,POST,PUT',
-    'Access-Control-Allow-Headers':
-      'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
-  },
-}
 
 const Products = () => {
   const [products, setProducts] = useState([])
   const [orderList, setOrderList] = useState([])
   const [order, setOrder] = useState([])
-  // fakedata.data
+  
+  
   useEffect(() => {
-    setProducts(() => {
-      fetch('https://d63e-95-77-98-248.eu.ngrok.io/api/products', requestOptions)
-        .then((res) => res.json())
-    })
-  }, [])
+    setProducts(fakeData.data)
+    // const fetchData = async () => {
+    //   const res = await fetch('https://213a-95-77-98-248.eu.ngrok.io/api/products')
+    //   const json = await res.json()
+    //   setProducts(json.data)
+    // }
+    // fetchData()
+  }, [setProducts])
+
+
 
   const handleClick = (product, isChecked) => {
     if (isChecked === true) {
@@ -37,6 +31,11 @@ const Products = () => {
       setOrder((prev) => prev.filter((p) => p !== product.id))
     }
     // console.log(orderList)
+  }
+  
+  const clear = () => {
+    setOrderList([])
+    setOrder([])
   }
 
   // console.log(products)
@@ -71,7 +70,7 @@ const Products = () => {
             return <Order key={id} name={name} price={price} onClick={handleClick} />
           })
         )}
-        {orderList.length ? <Button order={order} /> : null}
+        {orderList.length ? <Button order={order} onClick={clear} /> : null}
       </div>
     </div>
   )

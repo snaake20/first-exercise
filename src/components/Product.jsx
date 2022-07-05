@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 
 
 export const Product = (props) => {
-    const { name, price, bio} = props;
+    const {id, name, price, bio} = props;
     const product = {
       id: props.id,
       name: props.name,
@@ -14,10 +14,10 @@ export const Product = (props) => {
     }
 
   return (
-    <div id='product' className='border-b-2 border-gray last:border-b-0 bg-white flex'>
+    <div id={`product-${id}`} className='border-b-2 border-gray last:border-b-0 bg-white flex'>
       <div id='product__cart' className='flex flex-col align-center justify-center border-r-2 border-gray p-2'>
-        <input type='checkbox' className='product__cart-add'  onChange={onChangeHandler} />
-        <label >Add to Cart</label>
+        <input type='checkbox' id={`product__cart-add${id}`}  onChange={onChangeHandler} />
+        <label htmlFor={`product__cart-add${id}`}>Add to Cart</label>
       </div>
       <div className='product__info p-2'>
         <p>{name}</p>
